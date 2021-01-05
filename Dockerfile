@@ -33,3 +33,5 @@ RUN CHECKPOINT_DISABLE=1 terraform --version && \
       openssh-client
 
 CMD ["/bin/sh"]
+
+LABEL version=${TERRAFORM_VERSION}

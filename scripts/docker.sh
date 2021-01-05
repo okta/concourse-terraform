@@ -15,7 +15,7 @@ source ${OKTA_HOME}/robo-warrior/scripttemplates/utils/docker/docker_build_utils
 function buildImage() {
     DOCKER_FILE_PATH="${DOCKER_FILE_PATH:-$DOCKER_REPOSITORY_PATH/Dockerfile}"
     pushd "${DOCKER_REPOSITORY_PATH}"
-        docker build --build-arg RELEASE_VERSION="$RELEASE_VERSION"  --build-arg "TERRAFORM_VERSION=${TERRAFORM_VERSION}" -t  'TERRAFORM_VERSION:'${TERRAFORM_VERSION} -f ${DOCKER_FILE_PATH} -t ${DOCKER_REPOSITORY_NAME}':'${RELEASE_VERSION} .
+        docker build --build-arg RELEASE_VERSION="$RELEASE_VERSION"  --build-arg "TERRAFORM_VERSION=${TERRAFORM_VERSION}"  -f ${DOCKER_FILE_PATH} -t ${DOCKER_REPOSITORY_NAME}':'${TERRAFORM_VERSION} .
     popd
 }
 

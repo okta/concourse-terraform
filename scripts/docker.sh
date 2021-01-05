@@ -1,18 +1,14 @@
 #!/bin/bash
 
-
-
-
-
 # Docker build var
 export timeStamp=$(date -d "7 hours ago" "+%d%B%Y-%H%M%S-PST")
 export imageName=${BASE_DOCKER_IMAGE}:${SHA}-${timeStamp}
-export DOCKER_REPOSITORY_NAME=bacon
+export DOCKER_REPOSITORY_NAME=concourse-terraform
 export DOCKER_REPOSITORY_PATH="${OKTA_HOME}/concourse-terraform"
 export DOCKER_FILE_PATH="${DOCKER_REPOSITORY_PATH}/Dockerfile"
 export CI_DOCKER_IMAGE="true"
 export TERRAFORM_VERSION="0.14.3"
-
+  concourse-terraform
 source ${OKTA_HOME}/robo-warrior/util/functions.sh
 source ${OKTA_HOME}/robo-warrior/scripttemplates/utils/docker/docker_build_utils.sh
 

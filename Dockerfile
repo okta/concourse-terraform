@@ -32,6 +32,6 @@ RUN CHECKPOINT_DISABLE=1 terraform --version && \
       git \
       openssh-client
 
-LABEL version=0.14.3
+LABEL version="${TERRAFORM_VERSION}"
 
 CMD ["/bin/sh"]

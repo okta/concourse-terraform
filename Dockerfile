@@ -34,4 +34,4 @@ RUN CHECKPOINT_DISABLE=1 terraform --version && \
 
 CMD ["/bin/sh"]
 
-LABEL version=${TERRAFORM_VERSION}
+LABEL version=0.14.3

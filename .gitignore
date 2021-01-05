@@ -6,3 +6,6 @@ testdata/terraform/.terraform
 testdata/terraform/terraform.tfstate
 testdata/terraform/terraform.tfstate.backup
 testdata/terraform/tfplan
+
+#intellij
+.idea

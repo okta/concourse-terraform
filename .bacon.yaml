@@ -1,0 +1,10 @@
+test_suites:
+  - name: docker
+    script_path: /root/okta/concourse-terraforn/scripts
+    sort_order: '5'
+    timeout: '30'
+    script_name: build
+    script_env: {
+    }
+    criteria: MERGE
+    queue_name: small

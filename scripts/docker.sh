@@ -15,7 +15,7 @@ source ${OKTA_HOME}/robo-warrior/scripttemplates/utils/docker/docker_build_utils
 function buildImage() {
     DOCKER_FILE_PATH="${DOCKER_FILE_PATH:-$DOCKER_REPOSITORY_PATH/Dockerfile}"
     pushd "${DOCKER_REPOSITORY_PATH}"
-        docker build --build-arg RELEASE_VERSION="$RELEASE_VERSION"  --build-arg "TERRAFORM_VERSION=${TERRAFORM_VERSION}"  -f ${DOCKER_FILE_PATH} -t ${DOCKER_REPOSITORY_NAME}':'${TERRAFORM_VERSION}  -t 'version:'${TERRAFORM_VERSION}.
+        docker build --build-arg RELEASE_VERSION="$RELEASE_VERSION"  --build-arg "TERRAFORM_VERSION=${TERRAFORM_VERSION}"  -f ${DOCKER_FILE_PATH} -t ${DOCKER_REPOSITORY_NAME}':'${RELEASE_VERSION}.
     popd
 }
 
@@ -40,7 +40,7 @@ fi
 
 DOCKER_TOPIC_UPLOAD_LATEST_IMAGE_TAG=${DOCKER_TOPIC_UPLOAD_REG}'/'${DOCKER_REPOSITORY_NAME}':'latest
 
-docker tag  ${DOCKER_REPOSITORY_NAME}:${TERRAFORM_VERSION} ${DOCKER_TOPIC_UPLOAD_LATEST_IMAGE_TAG}
+docker tag  ${DOCKER_REPOSITORY_NAME}:${RELEASE_VERSION} ${DOCKER_TOPIC_UPLOAD_LATEST_IMAGE_TAG}
 docker push ${DOCKER_TOPIC_UPLOAD_LATEST_IMAGE_TAG} && echo -e "\nSuccessfully tagged and pushed image for latest-cache\n" || exit 1
 
 exit ${SUCCESS}

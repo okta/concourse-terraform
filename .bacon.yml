@@ -1,6 +1,6 @@
 test_suites:
   - name: docker
-    script_path: /root/okta/concourse-terraforn/scripts
+    script_path: /root/okta/concourse-terraform/scripts
     sort_order: '5'
     timeout: '30'
     script_name: docker

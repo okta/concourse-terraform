@@ -20,8 +20,6 @@ function buildImage() {
 }
 
 setup_service docker
-setup_service node v12.16.2
-setup_service yarn 1.22.4
 
 set_fullversion
 

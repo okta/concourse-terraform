@@ -3,7 +3,7 @@ test_suites:
     script_path: /root/okta/concourse-terraforn/scripts
     sort_order: '5'
     timeout: '30'
-    script_name: build
+    script_name: docker
     script_env: {
     }
     criteria: MERGE

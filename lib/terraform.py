@@ -59,6 +59,8 @@ def _terraform(
         TERRAFORM_BIN_FILE_PATH,
         *args
     ]
+    print('[debug] working_dir: ' + working_dir)
+
     # force 'TF_IN_AUTOMATION'
     os.environ['TF_IN_AUTOMATION'] = '1'
     if debug:
@@ -146,6 +148,7 @@ def init(
         backend_config_vars: Optional[dict] = None,
         debug: bool = False) -> None:
     # default terraform dir path
+
     if not terraform_dir_path:
         terraform_dir_path = '.'
     terraform_command_args = []

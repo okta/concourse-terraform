@@ -18,6 +18,7 @@ import lib.environment
 DEBUG = 'DEBUG'
 ERROR_ON_NO_CHANGES = 'ERROR_ON_NO_CHANGES'
 TERRAFORM_SOURCE_DIR = 'TF_WORKING_DIR'
+TERRAFORM_PLAN_DIR = 'TF_PLAN_DIR'
 TERRAFORM_DIR_PATH = 'TF_DIR_PATH'
 TERRAFORM_OUTPUT_DIR = 'TF_OUTPUT_DIR'
 ARCHIVE_OUTPUT_DIR = 'ARCHIVE_OUTPUT_DIR'
@@ -41,6 +42,7 @@ def process_args(args: list) -> None:
     if command == lib.commands.INIT:
         # get parameters from environment
         terraform_source_dir = os.environ[TERRAFORM_SOURCE_DIR]
+        terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         terraform_dir_path = os.environ.get(TERRAFORM_DIR_PATH)
         debug = os.environ.get(DEBUG)
         if debug:
@@ -48,6 +50,7 @@ def process_args(args: list) -> None:
             debug = bool(strtobool(debug))
         lib.commands.init(
             terraform_source_dir,
+            terraform_plan_dir,
             terraform_dir_path=terraform_dir_path,
             debug=debug)
     elif command == lib.commands.PLAN:

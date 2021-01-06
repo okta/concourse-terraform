@@ -1,6 +1,7 @@
 FROM alpine:3.8 as build
 
 ARG TERRAFORM_VERSION=0.0.0
+ARG VAULT_VERSION=0.0.0
 
 COPY hashicorp.asc .
 
@@ -16,9 +17,17 @@ RUN apk add --no-cache --update \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     cat terraform_${TERRAFORM_VERSION}_SHA256SUMS | grep terraform_${TERRAFORM_VERSION}_linux_amd64.zip | sha256sum -c && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
+    curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS.sig > vault_${VAULT_VERSION}_SHA256SUMS.sig && \
+    curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS > vault_${VAULT_VERSION}_SHA256SUMS && \
+    gpg --verify vault_${VAULT_VERSION}_SHA256SUMS.sig vault_${VAULT_VERSION}_SHA256SUMS && \
+    curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip > vault_${VAULT_VERSION}_linux_amd64.zip && \
+    unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS.sig \
       terraform_${TERRAFORM_VERSION}_SHA256SUMS \
       terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+      vault_${VAULT_VERSION}_linux_amd64.zip \
+      vault_${VAULT_VERSION}_SHA256SUMS.sig \
+      vault_${VAULT_VERSION}_SHA256SUMS \
       hashicorp.asc
 
 FROM python:3.7.2-alpine3.8

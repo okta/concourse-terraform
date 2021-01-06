@@ -447,6 +447,7 @@ def _convert_and_import_output_var_files_to_terraform_dir(
 # =============================================================================
 def init_terraform_dir(
         terraform_source_dir: Optional[str] = None,
+        terraform_plan_dir:  Optional[str] = None,
         terraform_dir_path: Optional[str] = None,
         terraform_work_dir: Optional[str] = None,
         debug: bool = False) -> str:
@@ -490,7 +491,7 @@ def init_terraform_dir(
                                  plugin_cache_dir)
     # terraform init
     lib.terraform.init(
-        terraform_dir,
+        terraform_dir+"/"+terraform_plan_dir,
         terraform_dir_path=terraform_dir_path,
         plugin_cache_dir_path=plugin_cache_dir,
         backend_config_vars=backend_config_vars,

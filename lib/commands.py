@@ -32,10 +32,12 @@ COMMANDS = [
 # =============================================================================
 def init(
         terraform_source_dir: str,
+        terraform_plan_dir: str,
         terraform_dir_path: Optional[str] = None,
         debug: bool = False) -> None:
     lib.terraform_dir.init_terraform_dir(
         terraform_source_dir,
+        terraform_plan_dir,
         terraform_dir_path=terraform_dir_path,
         debug=debug)
 

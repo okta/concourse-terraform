@@ -491,7 +491,8 @@ def init_terraform_dir(
                                  plugin_cache_dir)
     # terraform init
     lib.terraform.init(
-        terraform_dir+"/"+terraform_plan_dir,
+        f'{terraform_dir}/{terraform_plan_dir}',
+        # terraform_dir+"/"+terraform_plan_dir,
         terraform_dir_path=terraform_dir_path,
         plugin_cache_dir_path=plugin_cache_dir,
         backend_config_vars=backend_config_vars,

@@ -490,7 +490,7 @@ def init_terraform_dir(
         _import_plugin_cache_dir(input_plugin_cache_dir,
                                  plugin_cache_dir)
 
-    print(f'[debug] terraform_plan_dir:  {terraform_plan_dir}')
+    print(f'[debug] terraform_dir.py terraform_plan_dir:  {terraform_plan_dir}')
     # terraform init
     lib.terraform.init(
         f'{terraform_dir}/{terraform_plan_dir}',

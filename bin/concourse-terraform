@@ -43,7 +43,7 @@ def process_args(args: list) -> None:
         # get parameters from environment
         terraform_source_dir = os.environ[TERRAFORM_SOURCE_DIR]
         terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
-        print(f'[debug] terraform_plan_dir:  {terraform_plan_dir}')
+        print(f'[debug] concourse-terraform: terraform_plan_dir:  {terraform_plan_dir}')
         terraform_dir_path = os.environ.get(TERRAFORM_DIR_PATH)
         debug = os.environ.get(DEBUG)
         if debug:

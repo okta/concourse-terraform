@@ -110,6 +110,7 @@ def create_plan(
     terraform_dir = lib.terraform_dir.init_terraform_dir(
         terraform_source_dir,
         terraform_dir_path=terraform_dir_path,
+        terraform_plan_dir=terraform_plan_dir,
         debug=debug)
     lib.terraform_dir.plan_terraform_dir(
         terraform_dir,

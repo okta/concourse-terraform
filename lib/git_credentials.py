@@ -49,7 +49,7 @@ def main(environment: dict, ssh_keys_dir: str = None) -> None:
     if git_credential_value_from_var:
         # write value to file
         with open(git_credential_file_path, 'w') as git_credential_file:
-            git_credential_file.write(git_credential_file_from_var)
+            git_credential_file.write(git_credential_value_from_var)
     elif git_credential_file_from_var:
         shutil.copyfile(git_credential_file_from_var, git_credential_file_path)
 

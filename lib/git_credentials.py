@@ -2,7 +2,6 @@
 
 import os
 import shutil
-import stat
 import sys
 
 GIT_CREDENTIAL_DIR = "~/"

@@ -99,6 +99,7 @@ def create_plan(
         archive_output_dir: str,
         plan_file_path: Optional[str] = None,
         terraform_dir_path: Optional[str] = None,
+        terraform_plan_dir: Optional[str] = None,
         state_file_path: Optional[str] = None,
         output_var_files: Optional[dict] = None,
         source_ref: Optional[str] = None,
@@ -113,6 +114,7 @@ def create_plan(
     lib.terraform_dir.plan_terraform_dir(
         terraform_dir,
         terraform_dir_path=terraform_dir_path,
+        terraform_plan_dir=terraform_plan_dir,
         create_plan_file=True,
         plan_file_path=plan_file_path,
         state_file_path=state_file_path,

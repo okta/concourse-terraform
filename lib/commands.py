@@ -35,6 +35,7 @@ def init(
         terraform_plan_dir: str,
         terraform_dir_path: Optional[str] = None,
         debug: bool = False) -> None:
+    print(f'[debug] terraform_plan_dir:  {terraform_plan_dir}')
     lib.terraform_dir.init_terraform_dir(
         terraform_source_dir,
         terraform_plan_dir,

@@ -20,21 +20,6 @@ def log(message: str) -> None:
     print(f"[install-git-credential] {message}", file=sys.stderr)
 
 
-# def create_git_config(
-#         git_credential_file_path: str,
-#         git_credential_dir: str) -> None:
-#     git_config_file_path = \
-#         os.path.join(
-#             GIT_CREDENTIAL_DIR,
-#             GIT_CREDENTIAL_FILE_VAR)
-#     git_config = 'StrictHostKeyChecking no\nLogLevel quiet\n'
-#     if os.path.exists(git_config_file_path):
-#         ssh_config += f'Host *\n    IdentityFile {ssh_key_file_path}\n'
-#     with open(git_config_file_path, 'w') as ssh_config_file:
-#         ssh_config_file.write(ssh_config)
-#     log(f"wrote git config to: {git_config_file_path}")
-
-
 def main(environment: dict, ssh_keys_dir: str = None) -> None:
     # get vars from environment
     git_config_file_from_var = environment.get(GIT_CONFIG_FILE_VAR)

@@ -59,7 +59,7 @@ def _terraform(
         TERRAFORM_BIN_FILE_PATH,
         *args
     ]
-    print('[debug] working_dir: ' f"{' '.join(working_dir)}")
+    print(f'[debug] working_dir:  {working_dir}')
 
     # force 'TF_IN_AUTOMATION'
     os.environ['TF_IN_AUTOMATION'] = '1'

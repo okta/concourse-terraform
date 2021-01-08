@@ -62,6 +62,9 @@ def _terraform(
     ]
     print(f'[debug] terraform.py working_dir:  {working_dir}')
 
+    for key, vaule in os.environ:
+        print(f'[debug] terraform.py envs {key}:  {vaule}')
+
     # force 'TF_IN_AUTOMATION'
     os.environ['TF_IN_AUTOMATION'] = '1'
     if envs:

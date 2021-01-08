@@ -21,6 +21,7 @@ inputs:
   optional: true
 params:
   PLAN_FILE_PATH:
+  TERRAFORM_PLAN_DIR:
   DEBUG:
   ARCHIVE_INPUT_DIR: plan-output-archive
 run:

@@ -138,6 +138,7 @@ def create_plan(
 # =============================================================================
 def show_plan(
         archive_input_dir: str,
+        terraform_plan_dir: Optional[str] = None,
         plan_file_path: Optional[str] = None,
         debug: bool = False) -> None:
     terraform_dir = lib.terraform_dir.restore_terraform_dir(
@@ -145,6 +146,7 @@ def show_plan(
         debug=debug)
     lib.terraform_dir.show_terraform_plan(
         terraform_dir,
+        terraform_plan_dir=terraform_plan_dir,
         plan_file_path=plan_file_path,
         debug=debug)
 

@@ -698,6 +698,7 @@ def apply_terraform_plan(
 # =============================================================================
 def show_terraform_plan(
         terraform_dir: str,
+        terraform_plan_dir: Optional[str] = None,
         plan_file_path: Optional[str] = None,
         debug: bool = False) -> None:
     # check terraform dir
@@ -707,7 +708,7 @@ def show_terraform_plan(
     if not plan_file_path:
         plan_file_path = TERRAFORM_PLAN_FILE_NAME
     lib.terraform.show(
-        terraform_dir,
+        f'{terraform_dir}/{terraform_plan_dir}',
         plan_file_path,
         debug=debug)
 

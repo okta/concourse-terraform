@@ -145,6 +145,7 @@ def process_args(args: list) -> None:
     elif command == lib.commands.SHOW_PLAN:
         # get parameters from environment
         archive_input_dir = os.environ[ARCHIVE_INPUT_DIR]
+        terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         plan_file_path = os.environ.get(PLAN_FILE_PATH)
         debug = os.environ.get(DEBUG)
         if debug:
@@ -152,6 +153,7 @@ def process_args(args: list) -> None:
             debug = bool(strtobool(debug))
         lib.commands.show_plan(
             archive_input_dir,
+            terraform_plan_dir=terraform_plan_dir,
             plan_file_path=plan_file_path,
             debug=debug)
     elif command == lib.commands.APPLY_PLAN:

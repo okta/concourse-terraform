@@ -48,7 +48,6 @@ def _dump_plugin_cache(plugin_cache_dir: str) -> None:
 # =============================================================================
 def _terraform(
         *args: str,
-        envs: Optional[list] = None,
         input=None,
         working_dir: str = None,
         plugin_cache_dir: str = None,
@@ -62,9 +61,6 @@ def _terraform(
     print(f'[debug] terraform.py working_dir:  {working_dir}')
     # force 'TF_IN_AUTOMATION'
     os.environ['TF_IN_AUTOMATION'] = '1'
-    if envs:
-        for key, value in envs.items():
-            os.environ[key] = value
     if debug:
         print('[debug] executing: ' + f"{' '.join(process_args)}")
     if plugin_cache_dir:
@@ -180,7 +176,6 @@ def init(
 def plan(
         working_dir_path: str,
         terraform_dir_path: Optional[str] = None,
-        vault_token: Optional[str] = None,
         plugin_cache_dir_path: Optional[str] = None,
         state_file_path: Optional[str] = None,
         create_plan_file: bool = False,
@@ -196,7 +191,6 @@ def plan(
     if not terraform_dir_path:
         terraform_dir_path = '.'
     terraform_command_args = []
-    terraform_command_envs = []
     if state_file_path:
         # specify state file
         terraform_command_args.append(f"-state={state_file_path}")
@@ -209,9 +203,6 @@ def plan(
     if destroy:
         # creating a destroy plan
         terraform_command_args.append('-destroy')
-    if vault_token:
-        terraform_command_envs.append({'VAULT_TOKEN': vault_token})
-        print(terraform_command_envs)
     # execute
     _terraform(
         'plan',

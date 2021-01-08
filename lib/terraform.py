@@ -5,7 +5,6 @@ import subprocess
 import sys
 from typing import Optional
 
-
 # =============================================================================
 #
 # constants
@@ -61,10 +60,6 @@ def _terraform(
         *args
     ]
     print(f'[debug] terraform.py working_dir:  {working_dir}')
-
-    for value in os.environ:
-        print(f'[debug] terraform.py envs {value}:  {os.environ[value]}')
-
     # force 'TF_IN_AUTOMATION'
     os.environ['TF_IN_AUTOMATION'] = '1'
     if envs:
@@ -77,6 +72,10 @@ def _terraform(
         if debug:
             print(f'[debug] set TF_PLUGIN_CACHE_DIR to {plugin_cache_dir}')
             _dump_plugin_cache(plugin_cache_dir)
+
+    if debug:
+        for value in os.environ:
+            print(f'[debug] terraform.py envs {value}:  {os.environ[value]}')
     try:
         # use Popen so we can read lines as they come
         with subprocess.Popen(

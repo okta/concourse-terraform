@@ -565,6 +565,7 @@ def restore_terraform_dir(
 def plan_terraform_dir(
         terraform_dir: str,
         terraform_dir_path: Optional[str] = None,
+        terraform_plan_dir: Optional[str] = None,
         state_file_path: Optional[str] = None,
         create_plan_file: bool = False,
         plan_file_path: Optional[str] = None,
@@ -599,6 +600,7 @@ def plan_terraform_dir(
     lib.terraform.plan(
         terraform_dir,
         terraform_dir_path=terraform_dir_path,
+        terraform_plan_dir=terraform_plan_dir,
         plugin_cache_dir_path=plugin_cache_dir,
         state_file_path=state_file_path,
         create_plan_file=create_plan_file,
@@ -618,6 +620,7 @@ def plan_terraform_dir(
 def apply_terraform_dir(
         terraform_dir: str,
         terraform_dir_path: str = None,
+        terraform_plan_dir: Optional[str] = None,
         output_var_files: Optional[dict] = None,
         state_file_path: Optional[str] = None,
         state_output_dir: Optional[str] = None,
@@ -648,6 +651,7 @@ def apply_terraform_dir(
         lib.terraform.apply(
             terraform_dir,
             terraform_dir_path=terraform_dir_path,
+            terraform_plan_dir=terraform_plan_dir,
             plugin_cache_dir_path=plugin_cache_dir,
             var_file_paths=var_file_paths,
             state_file_path=state_file_path,
@@ -664,6 +668,7 @@ def apply_terraform_dir(
 # =============================================================================
 def apply_terraform_plan(
         terraform_dir: str,
+        terraform_plan_dir=terraform_plan_dir,
         state_output_dir: Optional[str] = None,
         plan_file_path: Optional[str] = None,
         debug: bool = False) -> None:
@@ -678,6 +683,7 @@ def apply_terraform_plan(
     try:
         lib.terraform.apply(
             terraform_dir,
+            terraform_plan_dir=terraform_plan_dir,
             plugin_cache_dir_path=plugin_cache_dir,
             plan_file_path=plan_file_path,
             debug=debug)

@@ -49,7 +49,7 @@ def _dump_plugin_cache(plugin_cache_dir: str) -> None:
 # =============================================================================
 def _terraform(
         *args: str,
-        envs,
+        envs: Optional[list] = None,
         input=None,
         working_dir: str = None,
         plugin_cache_dir: str = None,

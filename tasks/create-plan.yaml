@@ -28,6 +28,7 @@ caches:
 params:
   TF_WORKING_DIR: terraform-source-dir
   TF_PLUGIN_CACHE: .tfcache
+  VAULT_TOKEN:
   TF_DIR_PATH:
   STATE_FILE_PATH:
   PLAN_FILE_PATH:

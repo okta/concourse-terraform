@@ -598,9 +598,8 @@ def plan_terraform_dir(
         if imported_output_var_files:
             var_file_paths.extend(imported_output_var_files)
     lib.terraform.plan(
-        terraform_dir,
+        f'{terraform_dir}/{terraform_plan_dir}',
         terraform_dir_path=terraform_dir_path,
-        terraform_plan_dir=terraform_plan_dir,
         plugin_cache_dir_path=plugin_cache_dir,
         state_file_path=state_file_path,
         create_plan_file=create_plan_file,

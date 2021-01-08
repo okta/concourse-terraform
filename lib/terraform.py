@@ -174,6 +174,7 @@ def init(
 def plan(
         working_dir_path: str,
         terraform_dir_path: Optional[str] = None,
+        terraform_plan_dir:  Optional[str] = None,
         plugin_cache_dir_path: Optional[str] = None,
         state_file_path: Optional[str] = None,
         create_plan_file: bool = False,

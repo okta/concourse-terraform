@@ -650,7 +650,6 @@ def apply_terraform_dir(
         lib.terraform.apply(
             f'{terraform_dir}/{terraform_plan_dir}',
             terraform_dir_path=terraform_dir_path,
-            terraform_plan_dir=terraform_plan_dir,
             plugin_cache_dir_path=plugin_cache_dir,
             var_file_paths=var_file_paths,
             state_file_path=state_file_path,

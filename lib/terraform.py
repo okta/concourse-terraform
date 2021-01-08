@@ -49,6 +49,7 @@ def _dump_plugin_cache(plugin_cache_dir: str) -> None:
 # =============================================================================
 def _terraform(
         *args: str,
+        envs,
         input=None,
         working_dir: str = None,
         plugin_cache_dir: str = None,
@@ -63,6 +64,9 @@ def _terraform(
 
     # force 'TF_IN_AUTOMATION'
     os.environ['TF_IN_AUTOMATION'] = '1'
+    if envs:
+        for key, value in envs.items():
+            os.environ[key] = value
     if debug:
         print('[debug] executing: ' + f"{' '.join(process_args)}")
     if plugin_cache_dir:

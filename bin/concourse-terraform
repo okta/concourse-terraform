@@ -138,6 +138,7 @@ def process_args(args: list) -> None:
             plan_file_path=plan_file_path,
             terraform_dir_path=terraform_dir_path,
             terraform_plan_dir=terraform_plan_dir,
+            vault_token=vault_token,
             state_file_path=state_file_path,
             output_var_files=output_var_files,
             source_ref=source_ref,

@@ -174,7 +174,7 @@ def init(
 def plan(
         working_dir_path: str,
         terraform_dir_path: Optional[str] = None,
-        terraform_plan_dir:  Optional[str] = None,
+        vault_token: Optional[str] = None,
         plugin_cache_dir_path: Optional[str] = None,
         state_file_path: Optional[str] = None,
         create_plan_file: bool = False,
@@ -190,6 +190,7 @@ def plan(
     if not terraform_dir_path:
         terraform_dir_path = '.'
     terraform_command_args = []
+    terraform_command_envs = []
     if state_file_path:
         # specify state file
         terraform_command_args.append(f"-state={state_file_path}")
@@ -202,6 +203,9 @@ def plan(
     if destroy:
         # creating a destroy plan
         terraform_command_args.append('-destroy')
+    if vault_token:
+        terraform_command_envs.append({'VAULT_TOKEN': vault_token})
+        print(terraform_command_envs)
     # execute
     _terraform(
         'plan',

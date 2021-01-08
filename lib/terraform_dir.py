@@ -668,7 +668,7 @@ def apply_terraform_dir(
 # =============================================================================
 def apply_terraform_plan(
         terraform_dir: str,
-        terraform_plan_dir=terraform_plan_dir,
+        terraform_plan_dir: Optional[str] = None,
         state_output_dir: Optional[str] = None,
         plan_file_path: Optional[str] = None,
         debug: bool = False) -> None:

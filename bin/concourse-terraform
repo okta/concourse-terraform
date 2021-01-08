@@ -26,6 +26,7 @@ ARCHIVE_INPUT_DIR = 'ARCHIVE_INPUT_DIR'
 SOURCE_REF = 'SOURCE_REF'
 SOURCE_REF_FILE = 'SOURCE_REF_FILE'
 PLAN_FILE_PATH = 'PLAN_FILE_PATH'
+VAULT_TOKEN = 'VAULT_TOKEN'
 DESTROY = 'DESTROY'
 STATE_FILE_PATH = 'STATE_FILE_PATH'
 STATE_OUTPUT_DIR = 'STATE_OUTPUT_DIR'
@@ -112,7 +113,8 @@ def process_args(args: list) -> None:
         terraform_dir_path = os.environ.get(TERRAFORM_DIR_PATH)
         terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
-        print(f'[debug] concourse-terraform.create_plan: terraform_plan_dir:  {terraform_plan_dir}')
+        vault_token = os.environ[VAULT_TOKEN]
+        print(f'[debug] concourse-terraform.create_plan: vault_token:  {vault_token}')
         state_file_path = os.environ.get(STATE_FILE_PATH)
         source_ref = os.environ.get(SOURCE_REF)
         source_ref_file = os.environ.get(SOURCE_REF_FILE)

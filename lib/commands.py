@@ -49,6 +49,7 @@ def init(
 def plan(
         terraform_source_dir: str,
         terraform_dir_path: Optional[str] = None,
+        terraform_plan_dir: str,
         state_file_path: Optional[str] = None,
         output_var_files: Optional[dict] = None,
         error_on_no_changes: Optional[bool] = None,

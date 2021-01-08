@@ -58,6 +58,7 @@ def process_args(args: list) -> None:
         # get parameters from environment
         terraform_source_dir = os.environ[TERRAFORM_SOURCE_DIR]
         terraform_dir_path = os.environ.get(TERRAFORM_DIR_PATH)
+        terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         state_file_path = os.environ.get(STATE_FILE_PATH)
         error_on_no_changes = os.environ.get(ERROR_ON_NO_CHANGES)
         output_var_files = \
@@ -76,6 +77,7 @@ def process_args(args: list) -> None:
         lib.commands.plan(
             terraform_source_dir,
             terraform_dir_path=terraform_dir_path,
+            terraform_plan_dir=terraform_plan_dir,
             state_file_path=state_file_path,
             output_var_files=output_var_files,
             error_on_no_changes=error_on_no_changes,
@@ -85,6 +87,7 @@ def process_args(args: list) -> None:
         # get parameters from environment
         terraform_source_dir = os.environ[TERRAFORM_SOURCE_DIR]
         terraform_dir_path = os.environ.get(TERRAFORM_DIR_PATH)
+        terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         output_var_files = \
             lib.environment.get_tf_output_var_files(os.environ)
         state_file_path = os.environ.get(STATE_FILE_PATH)
@@ -96,6 +99,7 @@ def process_args(args: list) -> None:
         lib.commands.apply(
             terraform_source_dir,
             terraform_dir_path=terraform_dir_path,
+            terraform_plan_dir=terraform_plan_dir,
             output_var_files=output_var_files,
             state_file_path=state_file_path,
             state_output_dir=state_output_dir,
@@ -106,6 +110,7 @@ def process_args(args: list) -> None:
         archive_output_dir = os.environ[ARCHIVE_OUTPUT_DIR]
         plan_file_path = os.environ.get(PLAN_FILE_PATH)
         terraform_dir_path = os.environ.get(TERRAFORM_DIR_PATH)
+        terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         print(f'[debug] concourse-terraform.create_plan: terraform_plan_dir:  {terraform_plan_dir}')
         state_file_path = os.environ.get(STATE_FILE_PATH)

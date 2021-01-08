@@ -667,6 +667,9 @@ def apply_terraform_plan(
         plan_file_path: Optional[str] = None,
         terraform_plan_dir: Optional[str] = None,
         debug: bool = False) -> None:
+
+    print("HERE")
+
     # check terraform dir
     if not terraform_dir:
         raise ValueError('terraform_dir cannot be empty')
@@ -675,9 +678,11 @@ def apply_terraform_plan(
         plan_file_path = TERRAFORM_PLAN_FILE_NAME
     # get the plugin cache path
     plugin_cache_dir = _get_plugin_cache_dir(terraform_dir)
+
+    plan_path = f'{terraform_dir}/{terraform_plan_dir}'
     try:
         lib.terraform.apply(
-            f'{terraform_dir}/{terraform_plan_dir}',
+            plan_path,
             plugin_cache_dir_path=plugin_cache_dir,
             plan_file_path=plan_file_path,
             debug=debug)

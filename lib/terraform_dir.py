@@ -648,7 +648,7 @@ def apply_terraform_dir(
             var_file_paths.extend(imported_output_var_files)
     try:
         lib.terraform.apply(
-            terraform_dir,
+            f'{terraform_dir}/{terraform_plan_dir}',
             terraform_dir_path=terraform_dir_path,
             terraform_plan_dir=terraform_plan_dir,
             plugin_cache_dir_path=plugin_cache_dir,

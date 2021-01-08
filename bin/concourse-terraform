@@ -161,6 +161,7 @@ def process_args(args: list) -> None:
         archive_input_dir = os.environ[ARCHIVE_INPUT_DIR]
         state_output_dir = os.environ.get(STATE_OUTPUT_DIR)
         plan_file_path = os.environ.get(PLAN_FILE_PATH)
+        terraform_plan_dir = os.environ[TERRAFORM_PLAN_DIR]
         debug = os.environ.get(DEBUG)
         if debug:
             # convert to bool if specified
@@ -169,6 +170,7 @@ def process_args(args: list) -> None:
             archive_input_dir,
             state_output_dir=state_output_dir,
             plan_file_path=plan_file_path,
+            terraform_plan_dir=terraform_plan_dir,
             debug=debug)
     elif command == lib.commands.OUTPUT:
         # get parameters from environment
